@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/vmr/login")
+@RequestMapping(value = "/login")
 public class LoginController {
 
     private final LoginService loginService;
@@ -19,5 +19,10 @@ public class LoginController {
     @PostMapping
     public boolean login(String username, String password){
         return loginService.login(username,password);
+    }
+
+    @PostMapping("/signup")
+    public String signUp(String username, String password, String confirmPassword){
+        return loginService.signup(username, password, confirmPassword);
     }
 }
